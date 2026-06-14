@@ -10,15 +10,34 @@
         $stmt = $pdo->prepare($sql);
         $stmt->execute([':name' => $input_name, ':password' => $input_pass]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($row) {
-            echo 'ログインすることができました。';
-        }
-        else {
-            echo 'ログインできませんでした。';
-        }
     } catch(PDOException $e) {
         echo $e->getMessage();
     }
 
 ?>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <link rel="stylesheet" href="../style/main.css">
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+    </style>
+    <script>
+    </script>
+</head>
+<body>
+    <div class="center"> 
+        <?php 
+            if ($row) {
+                echo 'ログインすることができました。';
+            }
+            else {
+                echo 'ログインできませんでした。';
+            }
+        ?>
+    </div>
+</body>
