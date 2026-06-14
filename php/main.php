@@ -3,6 +3,10 @@
     $input_name = $_POST['name'];
     $input_pass = $_POST['password'];
 
+    $date_time = new DateTime();
+    $date_time->setTimezone(new DateTimeZone("Asia/Tokyo"));
+    $date_time_format = $date_time->format("Y-m-d H:i"); 
+
     try {
         $pdo = new PDO($db_connect, 'aaa1', 'password');
 
@@ -33,7 +37,7 @@
     <div class="center"> 
         <?php 
             if ($row) {
-                echo 'ログインすることができました。';
+                echo 'ログインすることができました。<br>' .$date_time_format;
             }
             else {
                 echo 'ログインできませんでした。';
